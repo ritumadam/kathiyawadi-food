@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kathiyawadi Food</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+background:#b22222;
+color:white;
+padding:20px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.hero{
+height:450px;
+background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-content{
+background:rgba(0,0,0,0.5);
+padding:30px;
+border-radius:15px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+.search-section{
+padding:30px;
+text-align:center;
+}
+
+.search-section input{
+width:80%;
+max-width:500px;
+padding:12px;
+border-radius:30px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+.section-title{
+text-align:center;
+margin:20px 0;
+font-size:32px;
+color:#b22222;
+}
+
+.food-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+width:280px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.price{
+color:green;
+font-weight:bold;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.btn{
+background:#b22222;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.cart-box{
+position:fixed;
+right:15px;
+bottom:15px;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,.3);
+width:220px;
+}
+
+.cart-box h3{
+margin-bottom:10px;
+}
+
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 20px black;
+z-index:9999;
+text-align:center;
+}
+
+.popup button{
+margin-top:10px;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:32px;
+}
+
+.search-section input{
+width:95%;
+}
+
+.card{
+width:90%;
+}
+
+.cart-box{
+width:180px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍛 Kathiyawadi Food</h1>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Authentic Kathiyawadi Taste</h1>
+<p>Traditional Food Delivered Fresh</p>
+</div>
+</section>
+
+<section class="search-section">
+<input type="text" id="search" placeholder="Search Food..." onkeyup="searchFood()">
+</section>
+
+<h2 class="section-title">Popular Foods</h2>
+
+<div class="food-container" id="foods">
+
+<div class="card">
+<img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 162545.png">
+<div class="card-content">
+<h3>Bajra Rotla</h3>
+<p class="price">₹120</p>
+<button class="btn" onclick="addToCart('Bajra Rotla',120)">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 142042.png">
+<div class="card-content">
+<h3>Sev Tameta</h3>
+<p class="price">₹180</p>
+<button class="btn" onclick="addToCart('Sev Tameta',180)">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 162823.png">
+<div class="card-content">
+<h3>Khichdi Kadhi</h3>
+<p class="price">₹160</p>
+<button class="btn" onclick="addToCart('Khichdi Kadhi',160)">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+    <img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 154432.png">
+    <div class="card-content">
+    <h3>Dal Dhokri</h3>
+    <p class="price">₹150</p>
+    <button class="btn" onclick="addToCart('Dal Dhokri',160)">Add To Cart</button>
+    </div>
+    </div>
+    
+     <div class="card">
+        <img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 162501.png">
+        <div class="card-content">
+        <h3>Thepla</h3>
+        <p class="price">₹50</p>
+        <button class="btn" onclick="addToCart('Thepla',60)">Add To Cart</button>
+        </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 155013.png">
+            <div class="card-content">
+            <h3>Shiro</h3>
+            <p class="price">₹150</p>
+            <button class="btn" onclick="addToCart('Shiro',80)">Add To Cart</button>
+            </div>
+            </div>
+            
+
+        <div class="card">
+            <img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 154632.png">
+            <div class="card-content">
+            <h3>Undhiyu</h3>
+            <p class="price">₹50</p>
+            <button class="btn" onclick="addToCart('Undhiyu',150)">Add To Cart</button>
+            </div>
+            </div>
+
+            <div class="card">
+                <img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 154339.png">
+                <div class="card-content">
+                <h3>Raish</h3>
+                <p class="price">₹50</p>
+                <button class="btn" onclick="addToCart('Raish',150)">Add To Cart</button>
+                </div>
+                </div>
+
+                <div class="card">
+                    <img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 164643.png">
+                    <div class="card-content">
+                    <h3>Khakhra</h3>
+                    <p class="price">₹50</p>
+                    <button class="btn" onclick="addToCart('Khakhra',100)">Add To Cart</button>
+                    </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 142716.png">
+                        <div class="card-content">
+                        <h3>Baingan Bharta</h3>
+                        <p class="price">₹50</p>
+                        <button class="btn" onclick="addToCart('Baingan Bharta',150)">Add To Cart</button>
+                        </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 142251.png">
+                            <div class="card-content">
+                            <h3>Slad</h3>
+                            <p class="price">₹50</p>
+                            <button class="btn" onclick="addToCart('Slad',50)">Add To Cart</button>
+                            </div>
+                            </div>
+
+                            <div class="card">
+                                <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 142334.png">
+                                <div class="card-content">
+                                <h3>Aam ka Achar</h3>
+                                <p class="price">₹50</p>
+                                <button class="btn" onclick="addToCart('Aam ka Achar',150)">Add To Cart</button>
+                                </div>
+                                </div>
+
+                                <div class="card">
+                                    <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 141907.png">
+                                    <div class="card-content">
+                                    <h3>Roti</h3>
+                                    <p class="price">₹50</p>
+                                    <button class="btn" onclick="addToCart('Roti',40)">Add To Cart</button>
+                                    </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 154202.png">
+                                        <div class="card-content">
+                                        <h3>Fafda</h3>
+                                        <p class="price">₹50</p>
+                                        <button class="btn" onclick="addToCart('Fafda',60)">Add To Cart</button>
+                                        </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 153928.png">
+                                            <div class="card-content">
+                                            <h3>Jalebi</h3>
+                                            <p class="price">₹50</p>
+                                            <button class="btn" onclick="addToCart('Jalebi',60)">Add To Cart</button>
+                                            </div>
+                                            </div>
+
+                                            <div class="card">
+                                                <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 142513.png">
+                                                <div class="card-content">
+                                                <h3>Mirchi Achar</h3>
+                                                <p class="price">₹50</p>
+                                                <button class="btn" onclick="addToCart('Mirchi Achar',60)">Add To Cart</button>
+                                                </div>
+                                                </div>
+
+                                                <div class="card">
+                                                    <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 142218.png">
+                                                    <div class="card-content">
+                                                    <h3>Chash</h3>
+                                                    <p class="price">₹50</p>
+                                                    <button class="btn" onclick="addToCart('Chash',30)">Add To Cart</button>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="card">
+                                                        <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 153659.png">
+                                                        <div class="card-content">
+                                                        <h3>Khamn Dhokla</h3>
+                                                        <p class="price">₹50</p>
+                                                        <button class="btn" onclick="addToCart('Khamn Dhokla',100)">Add To Cart</button>
+                                                        </div>
+                                                        </div>
+
+                                                        <div class="card">
+                                                            <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 101441.png">
+                                                            <div class="card-content">
+                                                            <h3>Khandvi</h3>
+                                                            <p class="price">₹50</p>
+                                                            <button class="btn" onclick="addToCart('Khandvi',150)">Add To Cart</button>
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="card">
+                                                                <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 101033.png">
+                                                                <div class="card-content">
+                                                                <h3>Stim Dhokla</h3>
+                                                                <p class="price">₹50</p>
+                                                                <button class="btn" onclick="addToCart('Stim Dhokla',150)">Add To Cart</button>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="card">
+                                                                    <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 101236.png">
+                                                                    <div class="card-content">
+                                                                    <h3>Tal Chiki</h3>
+                                                                    <p class="price">₹50</p>
+                                                                    <button class="btn" onclick="addToCart('Tal Chiki',100)">Add To Cart</button>
+                                                                    </div>
+                                                                    </div>
+
+                                                                    <div class="card">
+                                                                        <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 101155.png">
+                                                                        <div class="card-content">
+                                                                        <h3>Gajar ka Halva</h3>
+                                                                        <p class="price">₹50</p>
+                                                                        <button class="btn" onclick="addToCart('Gajar ka Halva',150)">Add To Cart</button>
+                                                                        </div>
+                                                                        </div>
+
+                                                                        <div class="card">
+                                                                            <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 102801.png">
+                                                                            <div class="card-content">
+                                                                            <h3>Loky ka Halva</h3>
+                                                                            <p class="price">₹50</p>
+                                                                            <button class="btn" onclick="addToCart('Loky ka Halva',150)">Add To Cart</button>
+                                                                            </div>
+                                                                            </div>
+
+                                                                            <div class="card">
+                                                                                <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 102452.png">
+                                                                                <div class="card-content">
+                                                                                <h3>kachori</h3>
+                                                                                <p class="price">₹50</p>
+                                                                                <button class="btn" onclick="addToCart('Kachori',60)">Add To Cart</button>
+                                                                                </div>
+                                                                                </div>
+                
+                                                                                
+                                                                                <div class="card">
+                                                                                    <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 102533.png">
+                                                                                    <div class="card-content">
+                                                                                    <h3>Chakri</h3>
+                                                                                    <p class="price">₹50</p>
+                                                                                    <button class="btn" onclick="addToCart('Chakri',60)">Add To Cart</button>
+                                                                                    </div>
+                                                                                    </div>
+                
+                                                                                    
+                                                                                    <div class="card">
+                                                                                        <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 102309.png">
+                                                                                        <div class="card-content">
+                                                                                        <h3>Batata Vada</h3>
+                                                                                        <p class="price">₹50</p>
+                                                                                        <button class="btn" onclick="addToCart('Batata Vada',100)">Add To Cart</button>
+                                                                                        </div>
+                                                                                        </div>
+                
+                                                                                        
+                                                                                        <div class="card">
+                                                                                            <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-31 102631.png"">
+                                                                                            <div class="card-content">
+                                                                                            <h3>Bhel</h3>
+                                                                                            <p class="price">₹50</p>
+                                                                                            <button class="btn" onclick="addToCart('Bhel',120)">Add To Cart</button>
+                                                                                            </div>
+                                                                                            </div>
+
+                                                                                            <div class="card">
+                                                                                                <img src="C:\Users\DELL\OneDrive\Pictures\Picasa\Screenshots\Screenshot 2026-05-27 105922.png">
+                                                                                                <div class="card-content">
+                                                                                                <h3>Nan Roti</h3>
+                                                                                                <p class="price">₹50</p>
+                                                                                                <button class="btn" onclick="addToCart('Nan Roti',50)">Add To Cart</button>
+                                                                                                </div>
+                                                                                                </div>
+                                        
+
+</div>
+
+<h2 class="section-title">Kathiyawadi Special Thali</h2>
+
+<div class="food-container">
+
+<div class="card">
+<img src="C:\Users\DELL\OneDrive\Desktop\foodwebsite3\Screenshot 2026-05-27 160655.png">
+<div class="card-content">
+<h3>Royal Kathiyawadi Thali</h3>
+<p class="price">₹399</p>
+<button class="btn" onclick="addToCart('Kathiyawadi Thali',399)">Add To Cart</button>
+</div>
+</div>
+
+</div>
+
+<div class="cart-box">
+<h3>🛒 Cart</h3>
+<p id="items">0 Items</p>
+<p>Total: ₹<span id="total">0</span></p>
+<button class="btn" onclick="openPopup()">Order Now</button>
+</div>
